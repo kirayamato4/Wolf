@@ -1,13 +1,21 @@
+#include <Wind.h>
 
-namespace Wind
+class CApp
+	: public Wind::Application
 {
-	__declspec( dllimport ) void Print();
-}
+public:
+	CApp()
+	{
 
-int main( int argc, char* argv[] )
+	}
+
+	virtual ~CApp()
+	{
+
+	}
+};
+
+Wind::Application* Wind::CreateApplication()
 {
-
-	Wind::Print();
-
-	return 0;
+	return new CApp();
 }
