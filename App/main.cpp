@@ -1,21 +1,20 @@
-#include <Wind.h>
+#include "pch.h"
+#include "App.h"
 
-class CApp
-	: public Wind::Application
+int main( int argc, char* argv[] )
 {
-public:
-	CApp()
-	{
+	App* pApp = new App();
+	if( !pApp )
+		return -1;
 
-	}
+	if( !pApp->Initialize() )
+		return -2;
 
-	virtual ~CApp()
-	{
+	int exit_code = pApp->Run();
 
-	}
-};
+	pApp->Terminate();
 
-Wind::Application* Wind::CreateApplication()
-{
-	return new CApp();
+	delete pApp;
+
+	return exit_code;
 }
